@@ -14,7 +14,8 @@ const gt = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=au
 
 
 func main() {
-	argsWithoutProg := os.Args[2:]
+	argLang := os.Args[1]
+	argsWithoutProg := os.Args[3:]
 	sentence := strings.Join(argsWithoutProg," ")
 
 	url := fmt.Sprintf(gt, "es", url.PathEscape(sentence))

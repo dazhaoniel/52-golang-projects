@@ -3,10 +3,10 @@
 ## Example Command
 
 ```shell
-./spanish -f table
+./dtranslate spanish for table
 > mesa
 
-./japanese -f I love you
+./dtranslate japanese for I love you
 > あなたを愛してる
 ```
 
