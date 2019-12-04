@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	// "flag"
 	"net/http"
 	"net/url"
 	"io/ioutil"
@@ -15,10 +14,6 @@ const gt = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=au
 
 
 func main() {
-	// sentencePtr := flag.String("for", "", "Provide a word or a sentence to translate")
-
-	// flag.Parse()
-
 	argsWithoutProg := os.Args[2:]
 	sentence := strings.Join(argsWithoutProg," ")
 
