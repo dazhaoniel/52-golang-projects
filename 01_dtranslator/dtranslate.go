@@ -15,10 +15,23 @@ const gt = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=au
 
 func main() {
 	argLang := os.Args[1]
+
+	supported := map[string]string{
+		"chinese": "zh-CN",
+		"english":   "en",
+		"japanese": "ja",
+		"spanish": "es",
+		"arabic": "ar",
+	}
+
+	if _, ok := supported[argLang]; !ok {
+		panic("Target language not supported!")
+	}
+
 	argsWithoutProg := os.Args[3:]
 	sentence := strings.Join(argsWithoutProg," ")
 
-	url := fmt.Sprintf(gt, "es", url.PathEscape(sentence))
+	url := fmt.Sprintf(gt, supported[argLang], url.PathEscape(sentence))
 
 	response, err := http.Get(url)
 	if err != nil {
@@ -26,12 +39,12 @@ func main() {
 	}
 	defer response.Body.Close()
 
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
+	responseData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
 		panic(err)
 	}
 
-    var resp []interface{}
+	var resp []interface{}
 	
 	err = json.Unmarshal(responseData, &resp)
 	if err != nil {
