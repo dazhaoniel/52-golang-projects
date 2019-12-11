@@ -1,4 +1,4 @@
-# Translator
+# DTranslator
 
 ## Example Command
 
