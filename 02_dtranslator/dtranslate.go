@@ -1,27 +1,27 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"os"
-	"strings"
+	"io/ioutil"
 	"net/http"
 	"net/url"
-	"io/ioutil"
-	"encoding/json"
+	"os"
+	"strings"
 )
 
 const gt = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=%s&dt=t&q=%s"
-
 
 func main() {
 	argLang := os.Args[1]
 
 	supported := map[string]string{
-		"chinese": "zh-CN",
-		"english":   "en",
+		"chinese":  "zh-CN",
+		"english":  "en",
 		"japanese": "ja",
-		"spanish": "es",
-		"arabic": "ar",
+		"spanish":  "es",
+		"arabic":   "ar",
+		"french":   "fr",
 	}
 
 	if _, ok := supported[argLang]; !ok {
@@ -29,7 +29,7 @@ func main() {
 	}
 
 	argsWithoutProg := os.Args[3:]
-	sentence := strings.Join(argsWithoutProg," ")
+	sentence := strings.Join(argsWithoutProg, " ")
 
 	url := fmt.Sprintf(gt, supported[argLang], url.PathEscape(sentence))
 
@@ -45,7 +45,7 @@ func main() {
 	}
 
 	var resp []interface{}
-	
+
 	err = json.Unmarshal(responseData, &resp)
 	if err != nil {
 		panic(err)

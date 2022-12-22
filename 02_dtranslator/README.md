@@ -1,5 +1,7 @@
 # DTranslator
 
+Small command line project for translations between several languages. Using Google Translate API
+
 ## Example Command
 
 ```shell
@@ -12,4 +14,4 @@
 
 ## Supported Target Langauges
 
-Chinese, Japanese, English, Spanish and Arabic
+Chinese, Japanese, English, Spanish, Arabic and French
