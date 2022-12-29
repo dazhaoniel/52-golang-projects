@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -17,8 +19,8 @@ const (
 )
 
 var (
-	username = ""
-	password = ""
+	username = "golddigger1990"
+	password = "M1xQhG#SizxZy^NsF573"
 	formID   = "user_login"
 	op       = "Log in"
 )
@@ -57,7 +59,7 @@ func (app *App) login() {
 	}
 }
 
-func (app *App) getProjects() {
+func (app *App) getProjects() []Project {
 	projectSearchURL := baseURL + "/search/projects/results?location=496"
 	client := app.Client
 	response, err := client.Get(projectSearchURL)
@@ -72,6 +74,18 @@ func (app *App) getProjects() {
 	if err != nil {
 		panic(err)
 	}
+	// fmt.Println(document)
+	var projects []Project
+
+	document.Find(".results-label").Each(func(i int, s *goquery.Selection) {
+		name := strings.TrimSpace(s.Text())
+		project := Project{
+			Name: name,
+		}
+
+		projects = append(projects, project)
+	})
+	return projects
 
 }
 
@@ -83,4 +97,9 @@ func main() {
 	}
 
 	app.login()
+	projects := app.getProjects()
+
+	for i, p := range projects {
+		fmt.Printf("%d: %s\n", i+1, p.Name)
+	}
 }
