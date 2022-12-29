@@ -19,8 +19,8 @@ const (
 )
 
 var (
-	username = "golddigger1990"
-	password = "M1xQhG#SizxZy^NsF573"
+	username = ""
+	password = ""
 	formID   = "user_login"
 	op       = "Log in"
 )
