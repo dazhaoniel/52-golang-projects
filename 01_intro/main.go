@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"math"
 	"math/rand"
+	"os"
 	"sort"
 )
 
@@ -93,6 +95,15 @@ func wordCount(words []string) map[string]int {
 	return m
 }
 
+func readFile() {
+	f, err := os.Open(os.Args[1])
+	if err != nil {
+		os.Exit(1)
+	}
+	io.Copy(os.Stdout, f)
+}
+
 func main() {
-	fmt.Println(wordCount([]string{"apple", "apple", "tea", "french"}))
+	// fmt.Println(wordCount([]string{"apple", "apple", "tea", "french"}))
+	readFile()
 }
