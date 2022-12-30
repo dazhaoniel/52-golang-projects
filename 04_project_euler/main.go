@@ -46,7 +46,7 @@ func isPrime(n int) bool {
 func tenThoughsandthPrime() int {
 	c := 1
 	n := 3
-	for n > 0 {
+	for {
 		if isPrime(n) {
 			c += 1
 		}
