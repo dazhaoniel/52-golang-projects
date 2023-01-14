@@ -11,3 +11,9 @@ Inspired by [52 technologies in 2016](https://github.com/shekhargulati/52-techno
 3. **[Cares](https://github.com/dazhaoniel/52-golang-projects/tree/master/03_cares)** I decided to rewrite my auto sign up for [New York Cares](https://www.newyorkcares.org/) projects script in Go. Instead of signing up, the script just lists available proejcts.
 
 4. **[Project Euler](https://github.com/dazhaoniel/52-golang-projects/tree/master/04_project_euler)** A few easy Project Euler problems solved in Go, for me to practice math related functions.
+
+5. **[Simple Test]**
+
+6. **[Go Routine]**
+
+7. **[gRPC](https://github.com/dazhaoniel/52-golang-projects/tree/master/07_grpc)** Build a fast scalable HTTP/2 API for a microservice written in Go, with gRPC and Protocol Buffers (protobuf)
